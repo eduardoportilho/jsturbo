@@ -1,0 +1,22 @@
+{
+  "name": "jsturbo",
+  "version": "1.0.0",
+  "description": "Usefull code to speed up development",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eduardoportilho/jsturbo.git"
+  },
+  "keywords": [
+    "util"
+  ],
+  "author": "Eduardo <eduardo@portilho.com> (http://www.portilho.com/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/eduardoportilho/jsturbo/issues"
+  },
+  "homepage": "https://github.com/eduardoportilho/jsturbo#readme"
+}
