@@ -1,9 +1,9 @@
-'use strict';
+'use strict'
 
-function foo() {
-	return 'bar'
+function foo () {
+  return 'bar'
 }
 
 module.exports = {
   foo: foo
-};
+}
