@@ -6,6 +6,10 @@
   "scripts": {
     "prebuild": "rimraf dist",
     "build": "babel --copy-files --out-dir dist src",
+    "build": "npm-run-all --parallel build:*",
+    "build:main": "babel --copy-files --out-dir dist --ignore *.test.js src",
+    "build:umd": "webpack --output-filename index.umd.js",
+    "build:umd.min": "webpack --output-filename index.umd.min.js -p",
     "test": "cross-env NODE_ENV=test nyc mocha",
     "watch:test": "mocha --watch",
     "lint": "eslint src",
@@ -29,6 +33,7 @@
   "homepage": "https://github.com/eduardoportilho/jsturbo#readme",
   "devDependencies": {
     "babel-cli": "^6.22.2",
+    "babel-loader": "^6.2.10",
     "babel-plugin-istanbul": "^3.1.2",
     "babel-preset-es2015": "^6.22.0",
     "babel-register": "^6.22.0",
@@ -39,10 +44,12 @@
     "eslint-plugin-promise": "^3.4.0",
     "eslint-plugin-standard": "^2.0.1",
     "ghooks": "^2.0.0",
+    "json-loader": "^0.5.4",
     "mocha": "^3.2.0",
     "npm-run-all": "^4.0.1",
     "nyc": "^10.1.2",
-    "rimraf": "^2.5.4"
+    "rimraf": "^2.5.4",
+    "webpack": "^1.14.0"
   },
   "nyc": {
     "all": true,
