@@ -1,10 +1,10 @@
-var expect = require('chai').expect;
-var jsturbo = require('../src/index');
+import {expect} from 'chai'
+import jsturbo from '../src/index'
 
 describe('index', function() {
   describe('foo', function() {
     it('should return bar', function() {
-      expect(jsturbo.foo()).to.equal('bar');
-    });
-  });
-});
+      expect(jsturbo.foo()).to.equal('bar')
+    })
+  })
+})

@@ -1,9 +1,10 @@
-'use strict'
-
 function foo () {
   return 'bar'
 }
 
-module.exports = {
+const mainExport = {
   foo: foo
 }
+
+export default mainExport
+module.exports = mainExport // for CommonJS compatibility
