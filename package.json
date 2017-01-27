@@ -1,6 +1,6 @@
 {
   "name": "jsturbo",
-  "version": "1.0.0",
+  "version": "0.0.0-development",
   "description": "Usefull code to speed up development",
   "main": "dist/index.js",
   "scripts": {
@@ -13,11 +13,13 @@
     "watch:test": "mocha --watch",
     "lint": "eslint src",
     "report-coverage": "cat ./coverage/lcov.info | codecov",
-    "validate": "npm-run-all --parallel test lint build"
+    "validate": "npm-run-all --parallel test lint build",
+    "release": "semantic-release pre && npm publish && semantic-release post",
+    "semantic-release": "semantic-release pre && npm publish && semantic-release post"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/eduardoportilho/jsturbo.git"
+    "url": "https://github.com/eduardoportilho/jsturbo.git"
   },
   "keywords": [
     "util"
@@ -50,7 +52,8 @@
     "npm-run-all": "^4.0.1",
     "nyc": "^10.1.2",
     "rimraf": "^2.5.4",
-    "webpack": "^1.14.0"
+    "webpack": "^1.14.0",
+    "semantic-release": "^6.3.2"
   },
   "nyc": {
     "all": true,
