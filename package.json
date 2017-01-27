@@ -4,7 +4,8 @@
   "description": "Usefull code to speed up development",
   "main": "index.js",
   "scripts": {
-    "test": "test",
+    "test": "mocha",
+    "watch:test": "mocha --watch",
     "lint": "eslint src"
   },
   "repository": {
@@ -21,9 +22,11 @@
   },
   "homepage": "https://github.com/eduardoportilho/jsturbo#readme",
   "devDependencies": {
+    "chai": "^3.5.0",
     "eslint": "^3.14.1",
     "eslint-config-standard": "^6.2.1",
     "eslint-plugin-promise": "^3.4.0",
-    "eslint-plugin-standard": "^2.0.1"
+    "eslint-plugin-standard": "^2.0.1",
+    "mocha": "^3.2.0"
   }
 }
