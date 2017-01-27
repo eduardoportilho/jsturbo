@@ -4,7 +4,8 @@
   "description": "Usefull code to speed up development",
   "main": "index.js",
   "scripts": {
-    "test": "test"
+    "test": "test",
+    "lint": "eslint src"
   },
   "repository": {
     "type": "git",
@@ -18,5 +19,11 @@
   "bugs": {
     "url": "https://github.com/eduardoportilho/jsturbo/issues"
   },
-  "homepage": "https://github.com/eduardoportilho/jsturbo#readme"
+  "homepage": "https://github.com/eduardoportilho/jsturbo#readme",
+  "devDependencies": {
+    "eslint": "^3.14.1",
+    "eslint-config-standard": "^6.2.1",
+    "eslint-plugin-promise": "^3.4.0",
+    "eslint-plugin-standard": "^2.0.1"
+  }
 }
