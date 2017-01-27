@@ -4,6 +4,7 @@
   "description": "Usefull code to speed up development",
   "main": "dist/index.js",
   "scripts": {
+    "commit": "git-cz",
     "prebuild": "rimraf dist",
     "build": "npm-run-all --parallel build:*",
     "build:main": "babel --copy-files --out-dir dist --ignore *.test.js src",
@@ -41,7 +42,9 @@
     "babel-register": "^6.22.0",
     "chai": "^3.5.0",
     "codecov": "^1.0.1",
+    "commitizen": "^2.9.5",
     "cross-env": "^3.1.4",
+    "cz-conventional-changelog": "^1.2.0",
     "eslint": "^3.14.1",
     "eslint-config-standard": "^6.2.1",
     "eslint-plugin-promise": "^3.4.0",
@@ -52,8 +55,9 @@
     "npm-run-all": "^4.0.1",
     "nyc": "^10.1.2",
     "rimraf": "^2.5.4",
-    "webpack": "^1.14.0",
-    "semantic-release": "^6.3.2"
+    "semantic-release": "^6.3.2",
+    "validate-commit-msg": "^2.11.1",
+    "webpack": "^1.14.0"
   },
   "nyc": {
     "all": true,
@@ -88,8 +92,12 @@
     }
   },
   "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    },
     "ghooks": {
-      "pre-commit": "npm run validate"
+      "pre-commit": "npm run validate",
+      "commit-msg": "validate-commit-msg"
     }
   }
 }
