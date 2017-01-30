@@ -17,8 +17,18 @@ function format (number, options) {
   return '' + formatted
 }
 
+/**
+ * Test if a number is an integer
+ * @param  {number} number to be tested
+ * @return {Boolean} true if the paramter is an integer number
+ */
+function isInt (number) {
+  return typeof number === 'number' && isFinite(number) && (number % 1 === 0)
+};
+
 const mainExport = {
-  format: format
+  format: format,
+  isInt: isInt
 }
 
 export default mainExport
