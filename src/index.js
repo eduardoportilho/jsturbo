@@ -1,5 +1,6 @@
 const mainExport = {
-  str: require('./jsturbo-string')
+  str: require('./jsturbo-string'),
+  num: require('./jsturbo-number')
 }
 
 export default mainExport
