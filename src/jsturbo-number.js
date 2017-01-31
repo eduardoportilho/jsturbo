@@ -1,3 +1,6 @@
+import str from '../src/jsturbo-string'
+import obj from '../src/jsturbo-object'
+
 /**
  * Convert a number to a formated string
  * @param  {number} number The number to be formated
@@ -35,10 +38,21 @@ function isNumber (number) {
   return typeof number === 'number' && isFinite(number)
 }
 
+/**
+ * Convert a value to a number
+ * @param  {any}
+ * @return {number}
+ */
+function toNumber (any) {
+  if (obj.isEmpty(any)) return NaN
+  return str.toNumber(any.toString())
+};
+
 const mainExport = {
   format: format,
   isInt: isInt,
-  isNumber: isNumber
+  isNumber: isNumber,
+  toNumber: toNumber
 }
 
 export default mainExport

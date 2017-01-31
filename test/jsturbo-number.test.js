@@ -54,10 +54,9 @@ describe("num", function() {
     });
   });
 
-  /**
-   * num.format
-   */
-
+    /**
+     * num.format
+     */
     describe("isNumber", function() {  
         it("should recognize numbers", function() {  
             expect(num.isNumber(0)).to.be.true;
@@ -76,4 +75,26 @@ describe("num", function() {
             expect(num.isNumber(NaN)).to.be.false;
         });
     });
+
+    /**
+     * num.toNumber
+     */
+    describe("toNumber", function() {  
+        it("should convert to number", function() {  
+            expect(num.toNumber('1.234,56')).to.equal(1234.56);
+            expect(num.toNumber(1234.56)).to.equal(1234.56);
+            expect(num.toNumber('123456')).to.equal(123456);
+            expect(num.toNumber(123456)).to.equal(123456);
+            expect(num.toNumber('1.234.567,89')).to.equal(1234567.89);
+        });
+
+        it("should return NaN on undefined, null or not a number", function() {
+            expect(num.toNumber(NaN)).to.be.NaN;
+            expect(num.toNumber(null)).to.be.NaN;
+            expect(num.toNumber(undefined)).to.be.NaN;
+            expect(num.toNumber('')).to.be.NaN;
+            expect(num.toNumber('naosounumero')).to.be.NaN;
+        });
+    });
+
 });
