@@ -5,7 +5,7 @@ describe("num", function() {
   let num = jsturbo.num
 
   /**
-   * str.format
+   * num.format
    */
   describe("format", function() {
       it("should be able to convert to string without formatting", function() {
@@ -34,7 +34,7 @@ describe("num", function() {
   });
 
   /**
-   * str.format
+   * num.format
    */
   describe("isInt", function() {  
     it("should recognize integer numbers", function() {  
@@ -53,4 +53,27 @@ describe("num", function() {
       expect(num.isInt({})).to.be.false;
     });
   });
+
+  /**
+   * num.format
+   */
+
+    describe("isNumber", function() {  
+        it("should recognize numbers", function() {  
+            expect(num.isNumber(0)).to.be.true;
+            expect(num.isNumber(123456)).to.be.true;
+            expect(num.isNumber(123456.00)).to.be.true;
+            expect(num.isNumber(0.1)).to.be.true;
+            expect(num.isNumber(123456.7)).to.be.true;
+        });
+
+        it("should reject other types", function() {  
+            expect(num.isNumber("0")).to.be.false;
+            expect(num.isNumber({})).to.be.false;
+        });
+
+        it("should reject NaN", function() {  
+            expect(num.isNumber(NaN)).to.be.false;
+        });
+    });
 });
