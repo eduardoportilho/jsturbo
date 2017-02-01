@@ -34,7 +34,7 @@ describe("num", function() {
   });
 
   /**
-   * num.format
+   * num.isInt
    */
   describe("isInt", function() {  
     it("should recognize integer numbers", function() {  
@@ -55,7 +55,7 @@ describe("num", function() {
   });
 
     /**
-     * num.format
+     * num.isNumber
      */
     describe("isNumber", function() {  
         it("should recognize numbers", function() {  
