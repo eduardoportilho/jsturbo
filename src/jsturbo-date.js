@@ -1,5 +1,10 @@
 import str from '../src/jsturbo-string'
 
+/**
+ * Converts a date to string in the format 'dd/MM/yyyy'
+ * @param  {Date} Date object
+ * @return {string}
+ */
 function toStringDMY (date) {
   return [
     str.pad(date.getDate().toString(), 2),
@@ -8,10 +13,20 @@ function toStringDMY (date) {
   ].join('/')
 };
 
+/**
+ * Check if a date object represents the current day
+ * @param  {Date}
+ * @return {Boolean}
+ */
 function isToday (date) {
   return toStringDMY(date) === toStringDMY(new Date())
 };
 
+/**
+ * Create a Date object based on a string in the format 'dd/MM/yyyy'
+ * @param  {string} string with a date in the format 'dd/MM/yyyy'
+ * @return {Date}
+ */
 function fromStringDMY (stringDdMmYyyy) {
   stringDdMmYyyy = stringDdMmYyyy.replace(/\D/g, '')
   var day = parseInt(stringDdMmYyyy.substr(0, 2))
