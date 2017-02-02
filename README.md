@@ -7,3 +7,7 @@
 [![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg?style=flat)](https://github.com/semantic-release/semantic-release)
 
 Usefull code to speed up development.
+
+[API documentation](https://eduardoportilho.github.io/jsturbo/index.html)
+
+[Project on GitHub](https://github.com/eduardoportilho/jsturbo)
