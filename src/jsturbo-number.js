@@ -1,3 +1,5 @@
+/** @module num */
+
 import str from '../src/jsturbo-string'
 import obj from '../src/jsturbo-object'
 

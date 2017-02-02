@@ -1,3 +1,5 @@
+/** @module str */
+
 /**
  * Apeend the given char into the left of the string so change its length to the provided value.
  * ex: pad('10', 4, '-'); //> '--10'

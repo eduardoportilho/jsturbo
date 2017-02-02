@@ -1,3 +1,5 @@
+/** @module date */
+
 import str from '../src/jsturbo-string'
 
 /**

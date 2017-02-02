@@ -1,3 +1,5 @@
+/** @module obj */
+
 /**
  * Test is a value is undefined, null, empty string, empty array or empty object
  * @param  {any} value
