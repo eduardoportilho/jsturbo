@@ -1,7 +1,7 @@
 /** @module num */
 
-import str from '../src/jsturbo-string'
-import obj from '../src/jsturbo-object'
+import str from './jsturbo-string'
+import obj from './jsturbo-object'
 
 /**
  * Convert a number to a formated string

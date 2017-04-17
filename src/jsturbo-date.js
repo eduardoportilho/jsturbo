@@ -1,6 +1,6 @@
 /** @module date */
 
-import str from '../src/jsturbo-string'
+import str from './jsturbo-string'
 
 /**
  * Converts a date to string in the format 'dd/MM/yyyy'
