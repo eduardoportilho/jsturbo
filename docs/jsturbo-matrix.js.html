@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>obj - Documentation</title>
+    <title>jsturbo-matrix.js - Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -27,206 +27,71 @@
 
 <div id="main">
     
-    <h1 class="page-title">obj</h1>
+    <h1 class="page-title">jsturbo-matrix.js</h1>
     
 
     
 
 
 
-
-<section>
-
-<header>
     
-        
-    
-</header>
-
-<article>
-    <div class="container-overview">
-    
-        
-
-        
-    
-    </div>
-
-    
-
-    
-
-    
-
-     
-
-    
-
-    
-
-    
-        <h3 class="subsection-title">Methods</h3>
-
-        
-            
-
-    
-
-    <h4 class="name" id="~isEmpty"><span class="type-signature">(inner) </span>isEmpty<span class="signature">(value)</span><span class="type-signature"> &rarr; {Boolean}</span></h4>
-
-    
-
-
-
-
-<dl class="details">
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="jsturbo-object.js.html">jsturbo-object.js</a>, <a href="jsturbo-object.js.html#line8">line 8</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-<div class="description">
-    Test is a value is undefined, null, empty string, empty array or empty object
-</div>
-
-
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>value</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">any</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-
-
-<dl class="param-type">
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">Boolean</span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-        
-    
-
-    
-
-    
-</article>
-
-</section>
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/** @module matrix */
+
+/**
+ * Convert a matrix coordinate into the index of it's serialized representation.
+ * @param  {Object} coord         Matrix coordinate (r, c)
+ * @param  {number} coord.r       Row index
+ * @param  {number} coord.c       Column index
+ * @param  {Object} matrixSize    Matrix size
+ * @param  {number} matrixSize.R  Number of rows
+ * @param  {number} matrixSize.C  Number of columns
+ * @return {number}               Corresponding index on the serialized matrix
+ */
+function coordToIndex (coord, matrixSize) {
+  if (coord.r &lt; 0 ||
+    coord.c &lt; 0 ||
+    coord.r >= matrixSize.R ||
+    coord.c >= matrixSize.C) {
+    throw new Error('Index out of bounds.')
+  }
+
+  return (coord.r * matrixSize.C) + coord.c
+}
+
+/**
+ * Convert the index of a serialized matrix into it's original coordinate.
+ * @param  {number} index         Index of the serialized matrix
+ * @param  {Object} matrixSize    Matrix size
+ * @param  {number} matrixSize.R  Number of rows
+ * @param  {number} matrixSize.C  Number of columns
+ * @return {Object} coord         Matrix coordinate (r, c)
+ * @return {number} coord.r       Row index
+ * @return {number} coord.c       Column index
+ */
+function indexToCoord (index, matrixSize) {
+  if (index &lt; 0) {
+    throw new Error('Index out of bounds.')
+  }
+  let r = Math.floor(index / matrixSize.C)
+  let c = index % matrixSize.C
+  if (r >= matrixSize.R || c >= matrixSize.C) {
+    throw new Error('Index out of bounds.')
+  }
+  return {r: r, c: c}
+}
+
+const mainExport = {
+  coordToIndex: coordToIndex,
+  indexToCoord: indexToCoord
+}
+
+export default mainExport
+module.exports = mainExport // for CommonJS compatibility
+</code></pre>
+        </article>
+    </section>
 
 
 

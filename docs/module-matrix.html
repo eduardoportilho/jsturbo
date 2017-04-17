@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>date - Documentation</title>
+    <title>matrix - Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -27,7 +27,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">date</h1>
+    <h1 class="page-title">matrix</h1>
     
 
     
@@ -72,7 +72,7 @@
 
     
 
-    <h4 class="name" id="~fromStringDMY"><span class="type-signature">(inner) </span>fromStringDMY<span class="signature">(string)</span><span class="type-signature"> &rarr; {Date}</span></h4>
+    <h4 class="name" id="~coordToIndex"><span class="type-signature">(inner) </span>coordToIndex<span class="signature">(coord, matrixSize)</span><span class="type-signature"> &rarr; {number}</span></h4>
 
     
 
@@ -84,7 +84,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="jsturbo-date.js.html">jsturbo-date.js</a>, <a href="jsturbo-date.js.html#line32">line 32</a>
+        <a href="jsturbo-matrix.js.html">jsturbo-matrix.js</a>, <a href="jsturbo-matrix.js.html#line13">line 13</a>
     </li></ul></dd>
     
 
@@ -124,7 +124,7 @@
 
 
 <div class="description">
-    Create a Date object based on a string in the format 'dd/MM/yyyy'
+    Convert a matrix coordinate into the index of it's serialized representation.
 </div>
 
 
@@ -162,13 +162,13 @@
 
         <tr>
             
-                <td class="name"><code>string</code></td>
+                <td class="name"><code>coord</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">string</span>
+<span class="param-type">Object</span>
 
 
             
@@ -178,7 +178,174 @@
 
             
 
-            <td class="description last">with a date in the format 'dd/MM/yyyy'</td>
+            <td class="description last">Matrix coordinate (r, c)
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>r</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Row index</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>c</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Column index</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>matrixSize</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Matrix size
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>R</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Number of rows</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>C</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Number of columns</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
         </tr>
 
     
@@ -201,6 +368,10 @@
 <h5>Returns:</h5>
 
         
+<div class="param-desc">
+    Corresponding index on the serialized matrix
+</div>
+
 
 
 <dl class="param-type">
@@ -209,7 +380,7 @@
     </dt>
     <dd>
         
-<span class="param-type">Date</span>
+<span class="param-type">number</span>
 
 
     </dd>
@@ -223,7 +394,7 @@
 
     
 
-    <h4 class="name" id="~isToday"><span class="type-signature">(inner) </span>isToday<span class="signature">(date)</span><span class="type-signature"> &rarr; {Boolean}</span></h4>
+    <h4 class="name" id="~indexToCoord"><span class="type-signature">(inner) </span>indexToCoord<span class="signature">(index, matrixSize)</span><span class="type-signature"> &rarr; {Object|number|number}</span></h4>
 
     
 
@@ -235,7 +406,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="jsturbo-date.js.html">jsturbo-date.js</a>, <a href="jsturbo-date.js.html#line23">line 23</a>
+        <a href="jsturbo-matrix.js.html">jsturbo-matrix.js</a>, <a href="jsturbo-matrix.js.html#line34">line 34</a>
     </li></ul></dd>
     
 
@@ -275,7 +446,7 @@
 
 
 <div class="description">
-    Check if a date object represents the current day
+    Convert the index of a serialized matrix into it's original coordinate.
 </div>
 
 
@@ -313,13 +484,13 @@
 
         <tr>
             
-                <td class="name"><code>date</code></td>
+                <td class="name"><code>index</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">Date</span>
+<span class="param-type">number</span>
 
 
             
@@ -329,118 +500,32 @@
 
             
 
-            <td class="description last"></td>
+            <td class="description last">Index of the serialized matrix</td>
         </tr>
 
     
-    </tbody>
-</table>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-
-
-<dl class="param-type">
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">Boolean</span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-        
+        <tr>
+            
+                <td class="name"><code>matrixSize</code></td>
             
 
-    
-
-    <h4 class="name" id="~toStringDMY"><span class="type-signature">(inner) </span>toStringDMY<span class="signature">(Date)</span><span class="type-signature"> &rarr; {string}</span></h4>
-
-    
-
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
 
 
+            
+            </td>
 
-<dl class="details">
+            
 
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="jsturbo-date.js.html">jsturbo-date.js</a>, <a href="jsturbo-date.js.html#line10">line 10</a>
-    </li></ul></dd>
-    
+            
 
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-<div class="description">
-    Converts a date to string in the format 'dd/MM/yyyy'
-</div>
-
-
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
+            <td class="description last">Matrix size
+                <h6>Properties</h6>
+                
 
 <table class="params">
     <thead>
@@ -464,13 +549,13 @@
 
         <tr>
             
-                <td class="name"><code>Date</code></td>
+                <td class="name"><code>R</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">Date</span>
+<span class="param-type">number</span>
 
 
             
@@ -480,7 +565,37 @@
 
             
 
-            <td class="description last">object</td>
+            <td class="description last">Number of rows</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>C</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Number of columns</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
         </tr>
 
     
@@ -501,8 +616,12 @@
 
 
 <h5>Returns:</h5>
+<ul>
+        <li>
+<div class="param-desc">
+    coord         Matrix coordinate (r, c)
+</div>
 
-        
 
 
 <dl class="param-type">
@@ -511,13 +630,53 @@
     </dt>
     <dd>
         
-<span class="param-type">string</span>
+<span class="param-type">Object</span>
 
 
     </dd>
 </dl>
-
+</li>
     
+        <li>
+<div class="param-desc">
+    coord.r       Row index
+</div>
+
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">number</span>
+
+
+    </dd>
+</dl>
+</li>
+    
+        <li>
+<div class="param-desc">
+    coord.c       Column index
+</div>
+
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">number</span>
+
+
+    </dd>
+</dl>
+</li>
+    </ul>
 
 
         
