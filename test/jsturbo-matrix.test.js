@@ -47,4 +47,21 @@ describe("matrix", function() {
       }).to.throw('Index out of bounds.');
     })
   })
+
+  /**
+   * matrix.forEach
+   */
+  describe(".forEach", function() {
+    it("should iterate over matrix", function() {
+      var sum = 0
+      matrix.forEach([[1,2],[3,4]], (i) => sum += i)
+      expect(sum).to.equal(10)
+    })
+
+    it("should iterate over incomplete matrix", function() {
+      var sum = 0
+      matrix.forEach([[1,2],[3,4], [5]], (i) => sum += i)
+      expect(sum).to.equal(15)
+    })
+  })
 })

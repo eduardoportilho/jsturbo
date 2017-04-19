@@ -43,9 +43,23 @@ function indexToCoord (index, matrixSize) {
   return {r: r, c: c}
 }
 
+/**
+ * Iterate over a matrix
+ * @param  {array}    matrix
+ * @param  {Function} fn
+ */
+function forEach (matrix, fn) {
+  for (var i = 0; i < matrix.length; i++) {
+    for (var j = 0; j < matrix[i].length; j++) {
+      fn(matrix[i][j])
+    }
+  }
+}
+
 const mainExport = {
   coordToIndex: coordToIndex,
-  indexToCoord: indexToCoord
+  indexToCoord: indexToCoord,
+  forEach: forEach
 }
 
 export default mainExport
