@@ -64,4 +64,17 @@ describe("matrix", function() {
       expect(sum).to.equal(15)
     })
   })
+
+  /**
+   * matrix.map
+   */
+  describe(".map", function() {
+    it("should double the values of the matrix", function() {
+      expect(matrix.map([[1,2],[3,4]], (i) => i*2)).to.eql([[2,4],[6,8]])
+    })
+
+    it("should replace the values of the matrix by the col index", function() {
+      expect(matrix.map([[1,2],[3,4],[5]], (val, r, c, matrix) => c)).to.eql([[0,1],[0,1],[0]])
+    })
+  })
 })

@@ -1,6 +1,16 @@
 /** @module matrix */
 
 /**
+ * Callback used in matrix operations.
+ *
+ * @callback matrixCallback
+ * @param {currentValue}  The current element being processed in the matrix.
+ * @param {row}           The row index.
+ * @param {col}           The column index.
+ * @param {matrix}        The matrix being processed.
+ */
+
+/**
  * Convert a matrix coordinate into the index of it's serialized representation.
  * @param  {Object} coord         Matrix coordinate (r, c)
  * @param  {number} coord.r       Row index
@@ -45,8 +55,8 @@ function indexToCoord (index, matrixSize) {
 
 /**
  * Iterate over a matrix
- * @param  {array}    matrix
- * @param  {Function} fn
+ * @param {array} matrix
+ * @param {Function} fn
  */
 function forEach (matrix, fn) {
   for (var i = 0; i < matrix.length; i++) {
@@ -56,10 +66,28 @@ function forEach (matrix, fn) {
   }
 }
 
+/**
+ * Creates a new matrix with the results of calling a provided function on every element in this array.
+ * @param  {array} matrix - Original matrix.
+ * @param  {matrixCallback} fn - Function that produces an element of the new matrix.
+ * @return {array} A new matrix with each element being the result of the callback function.
+ */
+function map (matrix, fn) {
+  var mapped = []
+  for (var i = 0; i < matrix.length; i++) {
+    mapped.push([])
+    for (var j = 0; j < matrix[i].length; j++) {
+      mapped[i].push(fn(matrix[i][j], i, j, matrix))
+    }
+  }
+  return mapped
+}
+
 const mainExport = {
   coordToIndex: coordToIndex,
   indexToCoord: indexToCoord,
-  forEach: forEach
+  forEach: forEach,
+  map: map
 }
 
 export default mainExport
