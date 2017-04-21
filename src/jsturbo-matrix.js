@@ -54,14 +54,14 @@ function indexToCoord (index, matrixSize) {
 }
 
 /**
- * Iterate over a matrix
- * @param {array} matrix
- * @param {Function} fn
+ * Executes a provided function once for each matrix element.
+ * @param {array} matrix - The matrix that forEach() is being applied to.
+ * @param {matrixCallback} fn - Function to execute for each element
  */
 function forEach (matrix, fn) {
   for (var i = 0; i < matrix.length; i++) {
     for (var j = 0; j < matrix[i].length; j++) {
-      fn(matrix[i][j])
+      fn(matrix[i][j], i, j, matrix)
     }
   }
 }

@@ -58,6 +58,12 @@ describe("matrix", function() {
       expect(sum).to.equal(10)
     })
 
+    it("should access receive indexes in callback", function() {
+      var sum = 0
+      matrix.forEach([[1,2],[3,4]], (val, r, c) => sum += (r+c))
+      expect(sum).to.equal(4)
+    })
+
     it("should iterate over incomplete matrix", function() {
       var sum = 0
       matrix.forEach([[1,2],[3,4], [5]], (i) => sum += i)
