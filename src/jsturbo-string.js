@@ -1,7 +1,7 @@
 /** @module str */
 
 /**
- * Apeend the given char into the left of the string so change its length to the provided value.
+ * Append the given char into the left of the string so change its length to the provided value.
  * ex: pad('10', 4, '-'); //> '--10'
  * @param {string} string String to be padded
  * @param {number} newLength Length of the padded string

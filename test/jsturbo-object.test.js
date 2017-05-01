@@ -1,7 +1,6 @@
 import {expect} from 'chai'
 import {obj} from '../src/index'
 
-
 describe("obj", function() {
     /*
      * obj.isEmpty
