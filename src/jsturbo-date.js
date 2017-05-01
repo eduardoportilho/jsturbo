@@ -13,7 +13,7 @@ function toStringDMY (date) {
     str.pad((date.getMonth() + 1).toString(), 2),
     str.pad(date.getFullYear().toString(), 4)
   ].join('/')
-};
+}
 
 /**
  * Check if a date object represents the current day
@@ -22,7 +22,7 @@ function toStringDMY (date) {
  */
 function isToday (date) {
   return toStringDMY(date) === toStringDMY(new Date())
-};
+}
 
 /**
  * Create a Date object based on a string in the format 'dd/MM/yyyy'
@@ -34,13 +34,64 @@ function fromStringDMY (stringDdMmYyyy) {
   var day = parseInt(stringDdMmYyyy.substr(0, 2))
   var month = parseInt(stringDdMmYyyy.substr(2, 2)) - 1
   var year = parseInt(stringDdMmYyyy.substr(4, 4))
+
+  if (year < 0 || year > 9999 ||
+    month < 0 || month > 11 ||
+    day < 1 || day > 31) {
+    throw new Error('Invalid date')
+  }
+
   return new Date(year, month, day, 0, 0, 0, 0)
-};
+}
+
+/**
+ * Lenient date parser.
+ * @param {string} string - Date in a reasonable format.
+ * @return {Date}
+ * @throws {Error} If the date couldn't be parsed.
+ */
+function fromString (string) {
+  var year, month, day
+  try {
+    var tokens = string.split(/\D/)
+
+    // DD-MM
+    if (tokens.length === 2) {
+      day = tokens[0]
+      month = tokens[1]
+      year = new Date().getFullYear()
+    } else if (tokens.length === 3) {
+      if (tokens[0].length === 4) {
+        // YYYY-XX-XX
+        year = tokens[0]
+        month = tokens[1]
+        day = tokens[2]
+      } else {
+        // DD-MM-YYYY
+        day = tokens[0]
+        month = tokens[1]
+        year = tokens[2]
+      }
+    } else {
+      throw new Error('invalid length')
+    }
+
+    if (parseInt(month) > 12) {
+      var temp = month
+      month = day
+      day = temp
+    }
+    return fromStringDMY(day + '/' + month + '/' + year)
+  } catch (any) {
+    throw new Error('Could not format date [' + string + '] (' + any.message + ')')
+  }
+}
 
 const mainExport = {
   toStringDMY: toStringDMY,
   isToday: isToday,
-  fromStringDMY: fromStringDMY
+  fromStringDMY: fromStringDMY,
+  fromString: fromString
 }
 
 export default mainExport

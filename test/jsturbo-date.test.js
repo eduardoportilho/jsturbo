@@ -23,6 +23,42 @@ describe("date", function() {
     });
 
     /*
+     * date.fromString
+     */
+    describe("fromString", function() {
+        it("should parse YYYY-MM-DD date", function() {
+            expect(date.fromString('2016-01-02')).to.eql(new Date(2016, 0, 2));
+            expect(date.fromString('2016\\01\\02')).to.eql(new Date(2016, 0, 2));
+            expect(date.fromString('2016-13-02')).to.eql(new Date(2016, 1, 13));
+        });
+
+        it("should parse DD-MM-YYYY date", function() {
+            expect(date.fromString('02-01-2016')).to.eql(new Date(2016, 0, 2));
+            expect(date.fromString('02\\01\\2016')).to.eql(new Date(2016, 0, 2));
+            expect(date.fromString('02-13-2016')).to.eql(new Date(2016, 1, 13));
+        });
+
+        it("should parse DD-MM date", function() {
+            var currentYear = new Date().getFullYear()
+            expect(date.fromString('02-01')).to.eql(new Date(currentYear, 0, 2));
+            expect(date.fromString('02\\01')).to.eql(new Date(currentYear, 0, 2));
+            expect(date.fromString('02-13')).to.eql(new Date(currentYear, 1, 13));
+        });
+
+        it("should throw on invalid length", function() {
+            expect(() => {
+                date.fromString('02-01-16-90');
+            }).to.throw('invalid length');
+        });
+
+        it("should throw on invalid date", function() {
+            expect(() => {
+                date.fromString('16-16-90');
+            }).to.throw('Invalid date');
+        });
+    });
+
+    /*
      * date.isToday
      */
     describe("isToday", function() {
