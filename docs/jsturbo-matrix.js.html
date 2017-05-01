@@ -22,7 +22,7 @@
 <label for="nav-trigger" class="overlay"></label>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-date.html">date</a><ul class='methods'><li data-type='method'><a href="module-date.html#~fromStringDMY">fromStringDMY</a></li><li data-type='method'><a href="module-date.html#~isToday">isToday</a></li><li data-type='method'><a href="module-date.html#~toStringDMY">toStringDMY</a></li></ul></li><li><a href="module-matrix.html">matrix</a><ul class='methods'><li data-type='method'><a href="module-matrix.html#~coordToIndex">coordToIndex</a></li><li data-type='method'><a href="module-matrix.html#~indexToCoord">indexToCoord</a></li></ul></li><li><a href="module-num.html">num</a><ul class='methods'><li data-type='method'><a href="module-num.html#~format">format</a></li><li data-type='method'><a href="module-num.html#~isInt">isInt</a></li><li data-type='method'><a href="module-num.html#~isNumber">isNumber</a></li><li data-type='method'><a href="module-num.html#~toNumber">toNumber</a></li></ul></li><li><a href="module-obj.html">obj</a><ul class='methods'><li data-type='method'><a href="module-obj.html#~isEmpty">isEmpty</a></li></ul></li><li><a href="module-str.html">str</a><ul class='methods'><li data-type='method'><a href="module-str.html#~isNumber">isNumber</a></li><li data-type='method'><a href="module-str.html#~pad">pad</a></li><li data-type='method'><a href="module-str.html#~toNumber">toNumber</a></li></ul></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-date.html">date</a><ul class='methods'><li data-type='method'><a href="module-date.html#~fromString">fromString</a></li><li data-type='method'><a href="module-date.html#~fromStringDMY">fromStringDMY</a></li><li data-type='method'><a href="module-date.html#~isToday">isToday</a></li><li data-type='method'><a href="module-date.html#~toStringDMY">toStringDMY</a></li></ul></li><li><a href="module-matrix.html">matrix</a><ul class='methods'><li data-type='method'><a href="module-matrix.html#~coordToIndex">coordToIndex</a></li><li data-type='method'><a href="module-matrix.html#~forEach">forEach</a></li><li data-type='method'><a href="module-matrix.html#~indexToCoord">indexToCoord</a></li><li data-type='method'><a href="module-matrix.html#~map">map</a></li></ul></li><li><a href="module-num.html">num</a><ul class='methods'><li data-type='method'><a href="module-num.html#~format">format</a></li><li data-type='method'><a href="module-num.html#~isInt">isInt</a></li><li data-type='method'><a href="module-num.html#~isNumber">isNumber</a></li><li data-type='method'><a href="module-num.html#~toNumber">toNumber</a></li></ul></li><li><a href="module-obj.html">obj</a><ul class='methods'><li data-type='method'><a href="module-obj.html#~isEmpty">isEmpty</a></li></ul></li><li><a href="module-str.html">str</a><ul class='methods'><li data-type='method'><a href="module-str.html#~isNumber">isNumber</a></li><li data-type='method'><a href="module-str.html#~pad">pad</a></li><li data-type='method'><a href="module-str.html#~toNumber">toNumber</a></li></ul></li></ul>
 </nav>
 
 <div id="main">
@@ -38,6 +38,16 @@
     <section>
         <article>
             <pre class="prettyprint source linenums"><code>/** @module matrix */
+
+/**
+ * Callback used in matrix operations.
+ *
+ * @callback matrixCallback
+ * @param {currentValue}  The current element being processed in the matrix.
+ * @param {row}           The row index.
+ * @param {col}           The column index.
+ * @param {matrix}        The matrix being processed.
+ */
 
 /**
  * Convert a matrix coordinate into the index of it's serialized representation.
@@ -82,9 +92,41 @@ function indexToCoord (index, matrixSize) {
   return {r: r, c: c}
 }
 
+/**
+ * Executes a provided function once for each matrix element.
+ * @param {array} matrix - The matrix that forEach() is being applied to.
+ * @param {matrixCallback} fn - Function to execute for each element
+ */
+function forEach (matrix, fn) {
+  for (var i = 0; i &lt; matrix.length; i++) {
+    for (var j = 0; j &lt; matrix[i].length; j++) {
+      fn(matrix[i][j], i, j, matrix)
+    }
+  }
+}
+
+/**
+ * Creates a new matrix with the results of calling a provided function on every element in this array.
+ * @param  {array} matrix - Original matrix.
+ * @param  {matrixCallback} fn - Function that produces an element of the new matrix.
+ * @return {array} A new matrix with each element being the result of the callback function.
+ */
+function map (matrix, fn) {
+  var mapped = []
+  for (var i = 0; i &lt; matrix.length; i++) {
+    mapped.push([])
+    for (var j = 0; j &lt; matrix[i].length; j++) {
+      mapped[i].push(fn(matrix[i][j], i, j, matrix))
+    }
+  }
+  return mapped
+}
+
 const mainExport = {
   coordToIndex: coordToIndex,
-  indexToCoord: indexToCoord
+  indexToCoord: indexToCoord,
+  forEach: forEach,
+  map: map
 }
 
 export default mainExport
@@ -101,7 +143,7 @@ module.exports = mainExport // for CommonJS compatibility
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a> on Mon Apr 17 2017 13:02:19 GMT+0200 (CEST) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a> on Mon May 01 2017 17:00:16 GMT+0200 (CEST) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
 </footer>
 
 <script>prettyPrint();</script>
