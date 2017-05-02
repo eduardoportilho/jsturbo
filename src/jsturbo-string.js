@@ -54,10 +54,22 @@ function toNumber (string) {
   return convertedString * signal
 };
 
+/**
+ * Check if the string contains at least N letters (case insensitive).
+ * @param  {string} string - String to test.
+ * @param  {number} [count=1] - Minimum number of letters to return true.
+ * @return {Boolean}
+ */
+function containsAlpha (string, count) {
+  var matches = string.match(/[a-z]/gi)
+  return (matches != null) && (matches.length >= (count || 1))
+}
+
 const mainExport = {
   pad: pad,
   isNumber: isNumber,
-  toNumber: toNumber
+  toNumber: toNumber,
+  containsAlpha: containsAlpha
 }
 
 export default mainExport
