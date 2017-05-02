@@ -71,4 +71,22 @@ describe("date", function() {
             expect(date.isToday(aDate)).to.be.false;
         });
     });
+
+    /*
+     * date.isToday
+     */
+    describe("isDate", function() {
+        it("should recognize valid date", function() {
+            expect(date.isDate('31/01/2010')).to.be.true;
+            expect(date.isDate('2010/01/31')).to.be.true;
+            expect(date.isDate('01-31-2010')).to.be.true;
+            expect(date.isDate('01-31')).to.be.true;
+        });
+
+        it("should recognize ivalid date", function() {
+            expect(date.isDate('31012010')).to.be.false;
+            expect(date.isDate('31/01/2010 dc')).to.be.false;
+            expect(date.isDate('31/20/2010')).to.be.false;
+        });
+    });
 });

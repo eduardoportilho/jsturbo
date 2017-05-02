@@ -87,11 +87,32 @@ function fromString (string) {
   }
 }
 
+/**
+ * Check if a string can be converted to a valid date.
+ * @param {string} string - String to check.
+ * @return {Boolean}
+ */
+function isDate (string) {
+  // 1: contains any char other than digits, '/', '-' or space?
+  var invalidChar = string.search(/[^\d/-\s]/g)
+  if (invalidChar >= 0) {
+    return false
+  }
+  try {
+    // 2: try to convert
+    fromString(string)
+    return true
+  } catch (any) {
+    return false
+  }
+}
+
 const mainExport = {
   toStringDMY: toStringDMY,
   isToday: isToday,
   fromStringDMY: fromStringDMY,
-  fromString: fromString
+  fromString: fromString,
+  isDate: isDate
 }
 
 export default mainExport
