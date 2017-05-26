@@ -28,24 +28,28 @@ describe('str', function() {
    * str.isNumber
    */
   describe("isNumber", function() {
-  it("should indentify valid numbers", function() {
-    expect(str.isNumber('10')).to.be.true
-    expect(str.isNumber('10.9')).to.be.true
-  })
+    it("should indentify valid numbers", function() {
+      expect(str.isNumber('10')).to.be.true
+      expect(str.isNumber('10.9')).to.be.true
+    })
 
-  it("should indentify invalid numbers", function() {
-    expect(str.isNumber('10x')).to.be.false
-    expect(str.isNumber('1$')).to.be.false
-    expect(str.isNumber('10.9.2')).to.be.false
-  })
+    it("should indentify invalid numbers", function() {
+      expect(str.isNumber('10x')).to.be.false
+      expect(str.isNumber('1$')).to.be.false
+      expect(str.isNumber('10.9.2')).to.be.false
+    })
 
-  it("should indentify valid numbers with custom separators", function() {
-    expect(str.isNumber('10,123', ',')).to.be.true
-  })
+    it("should indentify valid numbers with custom separators", function() {
+      expect(str.isNumber('10,123', ',')).to.be.true
+    })
 
-  it("should indentify invalid numbers with custom separators", function() {
-    expect(str.isNumber('1.', ',')).to.be.false
-  })
+    it("should indentify invalid numbers with custom separators", function() {
+      expect(str.isNumber('1.', ',')).to.be.false
+    })
+
+    it("should indentify invalid numbers on strings with no digits", function() {
+      expect(str.isNumber('')).to.be.false
+    })
   })
   /**
    * str.toNumber
@@ -115,6 +119,23 @@ describe('str', function() {
       expect(str.containsAlpha('12 4./')).to.be.false
       expect(str.containsAlpha('test', 5)).to.be.false
       expect(str.containsAlpha('t e s t', 5)).to.be.false
+    })
+  })
+
+  /**
+   * str.containsDigits
+   */
+  describe('containsDigits', function() {
+    it('should identify at least N digits', function() {
+      expect(str.containsDigits('a12 4./')).to.be.true
+      expect(str.containsDigits('1337', 4)).to.be.true
+      expect(str.containsDigits('1 3 3 7', 4)).to.be.true
+    })
+
+    it('should identify less than N digits', function() {
+      expect(str.containsDigits('a bc./')).to.be.false
+      expect(str.containsDigits('1337', 5)).to.be.false
+      expect(str.containsDigits('1 3 3 7', 5)).to.be.false
     })
   })
 })

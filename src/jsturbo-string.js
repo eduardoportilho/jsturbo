@@ -22,6 +22,10 @@ function pad (string, newLength, padChar) {
  */
 function isNumber (string, decimalSeparator) {
   var str = string
+  // prevent '' to be recognized as a number
+  if (!containsDigits(string)) {
+    return false
+  }
   if (decimalSeparator) {
     // special case: if the decimal separator is not '.', any dot make the string not a number
     if (decimalSeparator !== '.' && str.indexOf('.') >= 0) {
@@ -65,11 +69,23 @@ function containsAlpha (string, count) {
   return (matches != null) && (matches.length >= (count || 1))
 }
 
+/**
+ * Check if the string contains at least N digits.
+ * @param  {string} string - String to test.
+ * @param  {number} [count=1] - Minimum number of digits to return true.
+ * @return {Boolean}
+ */
+function containsDigits (string, count) {
+  var matches = string.match(/\d/g)
+  return (matches != null) && (matches.length >= (count || 1))
+}
+
 const mainExport = {
   pad: pad,
   isNumber: isNumber,
   toNumber: toNumber,
-  containsAlpha: containsAlpha
+  containsAlpha: containsAlpha,
+  containsDigits: containsDigits
 }
 
 export default mainExport
