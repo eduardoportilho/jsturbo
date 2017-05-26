@@ -45,6 +45,14 @@ describe("date", function() {
             expect(date.fromString('02-13')).to.eql(new Date(currentYear, 1, 13));
         });
 
+        it("should parse date with month abbreviation", function() {
+            var currentYear = new Date().getFullYear()
+            expect(date.fromString('31 jan')).to.eql(new Date(currentYear, 0, 31));
+            expect(date.fromString('okt 10')).to.eql(new Date(currentYear, 9, 10));
+            expect(date.fromString('31 jan 2016')).to.eql(new Date(2016, 0, 31));
+            expect(date.fromString('2016-jan-31')).to.eql(new Date(2016, 0, 31));
+        });
+
         it("should throw on invalid length", function() {
             expect(() => {
                 date.fromString('02-01-16-90');
@@ -77,16 +85,23 @@ describe("date", function() {
      */
     describe("isDate", function() {
         it("should recognize valid date", function() {
-            expect(date.isDate('31/01/2010')).to.be.true;
+            expect(date.isDate('31/01/2010'), '31/01/2010 should be valid').to.be.true;
             expect(date.isDate('2010/01/31')).to.be.true;
             expect(date.isDate('01-31-2010')).to.be.true;
             expect(date.isDate('01-31')).to.be.true;
         });
 
-        it("should recognize ivalid date", function() {
+        it("should recognize invalid date", function() {
             expect(date.isDate('31012010')).to.be.false;
             expect(date.isDate('31/01/2010 dc')).to.be.false;
             expect(date.isDate('31/20/2010')).to.be.false;
+            expect(date.isDate('31$20*2010')).to.be.false;
+        });
+
+        it("should recognize date with month abbreviation", function() {
+            expect(date.isDate('31 jan')).to.be.true;
+            expect(date.isDate('31 okt 2017')).to.be.true;
+            expect(date.isDate('2017 abr 31')).to.be.true;
         });
     });
 });
