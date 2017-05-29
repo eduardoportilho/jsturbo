@@ -95,6 +95,10 @@ describe("num", function() {
             expect(num.toNumber('')).to.be.NaN;
             expect(num.toNumber('naosounumero')).to.be.NaN;
         });
+        it("should convert negative number", function() {  
+            expect(num.toNumber('-1.234,56')).to.equal(-1234.56);
+            expect(num.toNumber('−25 221,63 kr')).to.equal(-25221.63);
+        });
     });
 
 });

@@ -12,7 +12,7 @@ function pad (string, newLength, padChar) {
   padChar = padChar || '0'
   let paddedString = string + ''
   return paddedString.length >= newLength ? paddedString : new Array(newLength - paddedString.length + 1).join(padChar) + paddedString
-};
+}
 
 /**
  * Test if the string represent a valid number.
@@ -34,7 +34,7 @@ function isNumber (string, decimalSeparator) {
     str = string.replace(decimalSeparator, '.')
   }
   return !isNaN(Number(str))
-};
+}
 
 /**
  * Convert a string to a number on a pretty lenient way.
@@ -53,10 +53,15 @@ function toNumber (string) {
   }
   if (convertedString.trim().length === 0) return NaN
 
-  var signal = string.indexOf('-') === 0 ? -1 : 1
+  var signal = 1
+  let signalCharCode = string.charCodeAt(0)
+  // 45: Hyphen, 8722: Minus Sign
+  if (signalCharCode === 45 || signalCharCode === 8722) {
+    signal = -1
+  }
   // make sure that the return is a number and fix the signal
   return convertedString * signal
-};
+}
 
 /**
  * Check if the string contains at least N letters (case insensitive).
