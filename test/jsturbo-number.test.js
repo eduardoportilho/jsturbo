@@ -52,6 +52,11 @@ describe("num", function() {
       expect(num.isInt("0")).to.be.false;
       expect(num.isInt({})).to.be.false;
     });
+
+    it("should reject null and undefined", function() {  
+      expect(num.isInt(null)).to.be.false;
+      expect(num.isInt(undefined)).to.be.false;
+    });
   });
 
     /**
