@@ -3,6 +3,10 @@
   "version": "0.0.0-development",
   "description": "Usefull code to speed up development",
   "main": "dist/index.js",
+  "engines" : { 
+    "node" : ">=0.12",
+    "npm" : "~1.0.20"
+  },
   "scripts": {
     "generate-docs": "node_modules/.bin/jsdoc -c jsdoc.json",
     "commit": "git-cz",
